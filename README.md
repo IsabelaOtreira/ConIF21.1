@@ -1,3 +1,2 @@
 # ConIF21.1
-Reposítorio de Consoles
-Aaa
+Repositório do GitHub para a aula de Jogos para Consoles
