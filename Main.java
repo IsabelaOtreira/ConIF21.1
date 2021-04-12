@@ -1,37 +1,29 @@
+import java.util.Scanner;
 
-public class Main {
-	public static int MAX =4;
-	public static int[] Grilo = new int [MAX]; 
-	public static int[] Pulos = new int [MAX]; 
-	public static int Pista= 100;
-	public static boolean Fim = false;
-
+public class Main { 
+	static int QtGrilos = 0;
 
 	        
 	public static void main(String[] args) {
-	    for (int indice=0;indice < MAX; indice++){
-	        Grilo[indice] = 0;
-	        Pulos[indice] = 0;    
-	    }
-	    int maxThread = 4;
-	    int nElements = MAX / maxThread;
+	    Scanner scanner = new Scanner(System.in);
+	    System.out.println("Quantos participantes a corrida vai ter? ");
+        QtGrilos = scanner.nextInt();
+        System.out.println("Grilos participantes " + QtGrilos);
+        System.out.println("Quantos cms a corrida vai ter? ");
+        Corrida.Pista = scanner.nextInt();
 		
-		Corrida [] threads = new Corrida[maxThread];
-		
-		for (int i = 0; i < maxThread; i++){
-			threads[i] = new Corrida(MAX, Grilo, Pulos, 
-												 Pista, Fim, i * nElements);
-			threads[i].start();
-		}
-		
-		
-		for (int i = 0; i < maxThread; i++){
-			try {
-				threads[i].join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}   
+		CtlThread threads[] = null;
+        Grilo[] grilos = new Grilo[QtGrilos];
+        
+        for ( int i = 0; i < QtGrilos; i++) {
+            grilos[i] = new Grilo("Grilo_" + (i+1));
+        }
 
-}
+
+        Corrida.Inicio(QtGrilos, threads, grilos);
+
+
+    }
+		}
+
+
