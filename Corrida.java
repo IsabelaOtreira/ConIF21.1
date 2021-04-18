@@ -2,6 +2,7 @@
 public class Corrida {
 	static int grilosf = 0;
 	public static int Pista = 0;
+	static int Colocacao = 1;
 	
 	public static void Inicio(int QtGrilos, CtlThread[] thread, Grilo[] grilo) {
         thread = new CtlThread[QtGrilos];
@@ -36,6 +37,13 @@ public class Corrida {
                 { 
                 grilosf ++;
                 System.out.println("O " + grilo[i].nome +" Chegou em " + grilo[i].pulinhos + " pulos") ;
+                if(grilo[i].atposicao >= Pista)
+                {
+                	System.out.println("O " + grilo[i].nome + " é o " + Colocacao + " colocado");
+                	Colocacao +=1;
+                	
+                }
+                	
                 grilo[i].acabou = true;
                 }
                 else 
