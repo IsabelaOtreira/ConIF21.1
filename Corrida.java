@@ -3,8 +3,13 @@ public class Corrida {
 	static int grilosf = 0;
 	public static int Pista = 0;
 	static int Colocacao = 1;
+	static int timesf = 0;
+	static int ColocacaoT = 1;
+	static boolean ganharam = false;
 	
-	public static void Inicio(int QtGrilos, CtlThread[] thread, Grilo[] grilo) {
+	
+	
+	public static void Inicio(int QtGrilos, CtlThread[] thread, Grilo[] grilo, Time[] times) {
         thread = new CtlThread[QtGrilos];
 
         for(int i = 0; i < QtGrilos; i++) 
@@ -23,9 +28,20 @@ public class Corrida {
               e.printStackTrace();
           }
         }
+        
         while(grilosf < QtGrilos) {
         Corre(QtGrilos, thread, grilo);
         }
+        
+        for(int i = 0; i < times; i++) 
+		{
+			times[i].Final();
+		}
+		for(int i = 0; i < times; i++) 
+		{
+			times[i].GanhadorF();
+			
+		}
     }
 
     public static void Corre(int QtGrilos, CtlThread[] thread, Grilo[] grilo) {
