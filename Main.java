@@ -22,7 +22,7 @@ public class Main {
         	grupos = (int)(QtGrilos / grilosnotime);
         }
         else {
-        	grupos = (int) Math.ceil(QtGrilos / grilosnotime); 
+        	grupos = (int) Math.ceil(QtGrilos / grilosnotime +1); 
         }
         times = new Time[grupos]; 
         
