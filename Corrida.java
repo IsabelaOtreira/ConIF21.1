@@ -9,7 +9,7 @@ public class Corrida {
 	
 	
 	
-	public static void Inicio(int QtGrilos, CtlThread[] thread, Grilo[] grilo, Time[] times) {
+	public static void Inicio(int QtGrilos, int Times, CtlThread[] thread, Grilo[] grilo, Time[] times) {
         thread = new CtlThread[QtGrilos];
 
         for(int i = 0; i < QtGrilos; i++) 
@@ -30,22 +30,23 @@ public class Corrida {
         }
         
         while(grilosf < QtGrilos) {
-        Corre(QtGrilos, thread, grilo);
-        }
-        
-        for(int i = 0; i < times; i++) 
+        Corre(QtGrilos,Times, thread, grilo, times);
+			
+		}
+        for(int i = 0; i < Main.grupos; i++) 
 		{
 			times[i].Final();
 		}
-		for(int i = 0; i < times; i++) 
+		for(int i = 0; i < Main.grupos; i++) 
 		{
 			times[i].GanhadorF();
 			
 		}
+        
     }
 
-    public static void Corre(int QtGrilos, CtlThread[] thread, Grilo[] grilo) {
-        for(int i = 0; i < QtGrilos; i++) 
+    public static void Corre(int QtGrilos,int Times, CtlThread[] thread, Grilo[] grilo, Time[] times) {
+        for(int i = 0; i < QtGrilos; i++)
         {
             if(grilo[i].acabou != true)
             {
@@ -55,11 +56,18 @@ public class Corrida {
                 System.out.println("O " + grilo[i].nome +" Chegou em " + grilo[i].pulinhos + " pulos") ;
                 if(grilo[i].atposicao >= Pista)
                 {
-                	System.out.println("O " + grilo[i].nome + " é o " + Colocacao + " colocado");
+                	if (Colocacao == 1) {
+                	grilo[i].top = true;
+                	grilo[i].Ganhar();
+                	
+                	System.out.println("O " + grilo[i].nome + " é o " + Colocacao + "º colocado");
                 	Colocacao +=1;
-                	
                 }
-                	
+                	else {   
+                		System.out.println("O " + grilo[i].nome + " é o " + Colocacao + "º colocado");
+                    	Colocacao +=1;
+                	}
+                }
                 grilo[i].acabou = true;
                 }
                 else 

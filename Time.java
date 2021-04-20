@@ -2,13 +2,13 @@ import java.util.concurrent.Semaphore;
 
 public class Time {   
 	Semaphore mutex;
-	public Time(int id) {
-	this.id = id;
+	public Time(int N) {
+	this.N = N;
 	this.mutex = new Semaphore(1);
 	}
 	
-	int id = 0;
-    boolean winner = false;
+	int N = 0;
+    boolean ganhadorT = false;
     int PulosT = 0;
     int DistanciaT;
   
@@ -28,15 +28,13 @@ public class Time {
 	}
 	public void Final() {
 
-		System.out.println("Time " + (id+1) + " : pulou " + PulosT + " vezes e percorreu " + DistanciaT + "cm");
+		System.out.println("Time " + (N+1) + " : pulou " + PulosT + " vezes e percorreu " + DistanciaT + "cm");
 		
 	}
 	public void GanhadorF() {
 		
-		if(winner) {
-			System.out.println("Time " + (id+1) + " foi o ganhador");
-
-			System.out.println("Fim da Corrida!");
+		if(ganhadorT) {
+			System.out.println("Time " + (N+1) + " foi o ganhador!");
 		}
 	}
 }
